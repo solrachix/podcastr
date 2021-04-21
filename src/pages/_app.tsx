@@ -3,11 +3,7 @@ import { useEffect } from 'react'
 
 import SmoothProvider from '@/lib/react-smooth-scrolling'
 
-import Layout from '@/components/Layout'
 import Context from '@/context'
-
-import Header from '@/components/Header'
-import Player from '@/components/Player'
 
 export default function App({
   Component: SsrComponent,
@@ -21,14 +17,7 @@ export default function App({
   }, [])
   return (
     <Context>
-      <Layout>
-        <main>
-          <Header />
-          <SsrComponent {...ssrPageProps} />
-        </main>
-
-        <Player />
-      </Layout>
+      <SsrComponent {...ssrPageProps} />
     </Context>
   )
 }

@@ -28,7 +28,7 @@ export const LightTheme = {
       lighter: '#6866FB',
       light: '#5659EB',
       normal: '#4347FE',
-      dark: '#494CDB',
+      dark: '#3846D4',
       darker: '#3846D4'
     },
     secondary: '#04D361',

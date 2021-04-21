@@ -5,9 +5,17 @@ import React, {
   useContext,
   useCallback
 } from 'react'
+import Layout from '@/components/Layout'
+
+import Header from '@/components/Header'
+import Player from '@/components/Player'
 
 interface GlobalContextData {
-  NavBar: {
+  header: {
+    activated: boolean
+    set(prop: boolean): void
+  }
+  player: {
     activated: boolean
     set(prop: boolean): void
   }
@@ -16,22 +24,41 @@ interface GlobalContextData {
 const GlobalContext = createContext<GlobalContextData>({} as GlobalContextData)
 
 export const GlobalProvider: React.FC = ({ children }) => {
-  const [enableNavBar, setEnableNavBar] = useState(true)
+  const [enableHeader, setEnableHeader] = useState(false)
+  const [enablePlayer, setEnablePlayer] = useState(false)
 
-  const NavBar = {
-    activated: enableNavBar,
+  const header = {
+    activated: enableHeader,
     set: useCallback((prop: boolean) => {
       !prop
-        ? document.querySelector('#__next').classList.add('navbar-false')
-        : document.querySelector('#__next').classList.remove('navbar-false')
+        ? document.querySelector('#__next').classList.add('Header-false')
+        : document.querySelector('#__next').classList.remove('Header-false')
 
-      setEnableNavBar(prop)
+      setEnableHeader(prop)
+    }, [])
+  }
+
+  const player = {
+    activated: enablePlayer,
+    set: useCallback((prop: boolean) => {
+      !prop
+        ? document.querySelector('#__next').classList.add('Player-false')
+        : document.querySelector('#__next').classList.remove('Player-false')
+
+      setEnablePlayer(prop)
     }, [])
   }
 
   return (
-    <GlobalContext.Provider value={{ NavBar }}>
-      {children}
+    <GlobalContext.Provider value={{ header, player }}>
+      <Layout>
+        <main>
+          {enableHeader && <Header />}
+          {children}
+        </main>
+
+        {enablePlayer && <Player />}
+      </Layout>
     </GlobalContext.Provider>
   )
 }
