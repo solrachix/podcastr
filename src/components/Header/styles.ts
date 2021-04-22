@@ -5,7 +5,7 @@ export const Container = styled.header`
   height: 6.5rem;
   padding: 2rem 4rem;
 
-  background: ${props => props.theme.colors.white};
+  background: ${props => props.theme.colors.tertiary};
   border-bottom: 1px solid ${props => props.theme.colors.background.lighter};
 
   display: flex;

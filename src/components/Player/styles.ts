@@ -2,6 +2,8 @@ import { rgba } from 'polished'
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  position: absolute;
+  right: 0;
   width: 26.5rem;
   height: 100vh;
   padding: 3rem 4rem;
@@ -9,7 +11,7 @@ export const Container = styled.div`
   background: ${props => props.theme.colors.primary.normal};
   color: ${props => props.theme.colors.white};
 
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;

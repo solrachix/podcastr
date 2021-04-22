@@ -61,28 +61,34 @@ export const LightTheme = {
 
 export const DarkTheme = {
   title: 'Dark',
+
+  borderRadius: '1rem',
+  font: {
+    text: '"Inter", sans-serif',
+    title: '"Lexend", sans-serif'
+  },
   colors: {
     primary: {
       lighter: '#6866FB',
       light: '#5659EB',
       normal: '#4347FE',
-      dark: '#494CDB',
+      dark: '#3846D4',
       darker: '#3846D4'
     },
-    secondary: '#E02041',
-    tertiary: '#2B303A',
+    secondary: '#04D361',
+    tertiary: '#0D0D0D',
 
     background: {
-      lighter: '#1C2028',
-      light: '#171719',
-      normal: '#121214',
-      dark: '#0E0E10',
+      lighter: '#202327',
+      light: '#131313',
+      normal: '#0E0E10',
+      dark: '#060606',
       darker: '#000'
     },
     text: {
-      light: '#fff',
-      normal: '#7B7B7C',
-      dark: '#6A6180'
+      light: '#AFB2B1',
+      normal: '#808080',
+      dark: '#494D4B'
     },
 
     white: '#f7f7f7',

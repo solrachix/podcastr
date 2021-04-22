@@ -14,7 +14,7 @@ export default createGlobalStyle`
     max-width: 100vw;
     max-height: 100vh;
 
-    background: ${props => props.theme.colors.background.lighter};
+    background: ${props => props.theme.colors.background.light};
     color: ${props => props.theme.colors.text.normal};
 
     overflow-x: visible;
@@ -80,7 +80,7 @@ export default createGlobalStyle`
   h1, h2, h3, h4, h5, h6 {
     font-weight: 600;
     font-family: ${({ theme }) => theme.font.title};
-    color: ${({ theme }) => theme.colors.text.normal};
+    color: ${({ theme }) => theme.colors.text.dark};
   }
   h1 {
     font-size: 2rem;
@@ -123,7 +123,12 @@ export default createGlobalStyle`
   }
 
 
-  
+  @media (max-width: 1366px) {
+    html {
+      font-size: 80%;
+    }
+  }
+
   @media (max-width: 1080px){
     html {
       font-size: 93.75%;

@@ -2,8 +2,6 @@ import styled, { css } from 'styled-components'
 
 export const Container = styled.div`
   padding: 0 4rem;
-  height: calc(100vh - 6.5rem);
-  overflow-y: scroll;
 
   h2 {
     margin-top: 3rem;
@@ -11,25 +9,29 @@ export const Container = styled.div`
   }
 
   .latestEpisodes {
+    max-width: 1000px;
     ul {
       list-style: none;
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
+      grid-template-columns: repeat(2, 50%);
       gap: 1.5rem;
 
       li {
         background: ${props => props.theme.colors.tertiary};
-        border: 1px solid ${props => props.theme.colors.background.light};
+        border: 1px solid ${props => props.theme.colors.background.lighter};
         padding: 1.25rem;
         border-radius: 1.5rem;
         position: relative;
 
-        display: flex;
+        display: grid; // flex
+        grid-template-rows: 100%;
+        grid-template-columns: 6rem calc(100% - 6rem);
+
         align-items: center;
 
         img {
-          width: 6rem;
-          height: 6rem;
+          width: 100%;
+          height: 100%;
           border-radius: 1rem;
         }
 
@@ -39,7 +41,7 @@ export const Container = styled.div`
 
           a {
             display: block;
-            color: ${props => props.theme.colors.background.darker};
+            color: ${props => props.theme.colors.text.dark};
             font-family: ${props => props.theme.font.title};
             font-weight: 600;
             text-decoration: none;
@@ -124,7 +126,7 @@ export const Container = styled.div`
       }
 
       th {
-        color: ${props => props.theme.colors.background.normal};
+        color: ${props => props.theme.colors.text.normal};
         text-transform: uppercase;
         font-family: ${props => props.theme.font.title};
         text-align: left;
@@ -140,7 +142,7 @@ export const Container = styled.div`
         }
 
         a {
-          color: ${props => props.theme.colors.background.darker};
+          color: ${props => props.theme.colors.text.dark};
           font-family: ${props => props.theme.font.title};
           font-weight: 600;
           text-decoration: none;
@@ -171,6 +173,14 @@ export const Container = styled.div`
             filter: brightness(0.95);
           }
         }
+      }
+    }
+  }
+
+  @media (max-width: 720px) {
+    .latestEpisodes {
+      ul {
+        grid-template-columns: 100%;
       }
     }
   }

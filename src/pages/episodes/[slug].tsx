@@ -40,7 +40,7 @@ export default function Episode({ episode }: EpisodeProps) {
   return (
     <Container>
       <div className="thumbnailContainer">
-        <Link href="/">
+        <Link href="/dashboard">
           <button type="button">
             <img src="/icons/arrow-left.svg" alt="Voltar" />
           </button>

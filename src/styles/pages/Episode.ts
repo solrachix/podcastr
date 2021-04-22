@@ -1,12 +1,14 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  max-width: 45rem;
+  max-width: 45rem !important;
   padding: 3rem 2rem;
   margin: 0 auto;
 
   .thumbnailContainer {
     position: relative;
+    width: fit-content;
+    margin: auto;
 
     img {
       border-radius: 1rem;
@@ -79,7 +81,7 @@ export const Container = styled.div`
   .description {
     margin-top: 2rem;
     line-height: 1.675rem;
-    color: ${props => props.theme.colors.background.darker};
+    color: ${props => props.theme.colors.text.dark};
 
     p {
       margin: 1.5rem 0;
