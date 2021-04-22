@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "export": "next export",
-    "server": "json-server server.json -w -d 750 -p 3333"
+    "server": "json-server db.json -w -d 750 -p 3333"
   },
   "dependencies": {
     "axios": "^0.21.1",
@@ -19,6 +19,7 @@
     "next-pwa": "^5.0.5",
     "next-svgr": "^0.0.2",
     "polished": "^4.1.1",
+    "rc-slider": "^9.7.2",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "react-icons": "^4.2.0",

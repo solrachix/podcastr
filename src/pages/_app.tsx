@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 
 import SmoothProvider from '@/lib/react-smooth-scrolling'
 
-import Context from '@/context'
+import Context from '@/contexts'
 
 export default function App({
   Component: SsrComponent,

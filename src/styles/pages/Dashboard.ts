@@ -94,7 +94,7 @@ export const Container = styled.div`
           width: 2.5rem;
           height: 2.5rem;
           background: ${props => props.theme.colors.tertiary};
-          border: 1px solid ${props => props.theme.colors.background.light};
+          border: 1px solid ${props => props.theme.colors.background.lighter};
           border-radius: 0.675rem;
           font-size: 0;
 
@@ -158,7 +158,7 @@ export const Container = styled.div`
           width: 2rem;
           height: 2rem;
           background: ${props => props.theme.colors.tertiary};
-          border: 1px solid ${props => props.theme.colors.background.light};
+          border: 1px solid ${props => props.theme.colors.background.lighter};
           border-radius: 0.5rem;
           font-size: 0;
 

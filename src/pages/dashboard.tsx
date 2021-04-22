@@ -10,7 +10,8 @@ import { convertDurationToTimeString } from './../utils/convertDurationToTimeStr
 import { format, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 
-import { useGlobal } from '@/context/global'
+import { usePlayer } from '@/contexts/player'
+import { useGlobal } from '@/contexts/global'
 
 import SEO from '@/components/SEO'
 import { Container } from '@/styles/pages/Dashboard'
@@ -39,6 +40,7 @@ export default function Home({
   latestEpisodes
 }: HomeProps): ReactElement {
   const { player, header } = useGlobal()
+  const { play } = usePlayer()
 
   useEffect(() => {
     player.set(true)
@@ -72,7 +74,7 @@ export default function Home({
                 <span>{episode.durationAsString}</span>
               </div>
 
-              <button type="button">
+              <button type="button" onClick={() => play(episode)}>
                 <img src="/icons/play-green.svg" alt="Tocar episódio" />
               </button>
             </li>

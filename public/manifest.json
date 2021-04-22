@@ -4,7 +4,8 @@
   "description": "Olá eu sou Carlos Miguel/solrachix, Programador full-stack, apaixonado por tecnologia.",
   "theme_color": "#4347FE",
   "background_color": "#121214",
-  "display": "minimal-ui",
+  "display": "standalone",
+  "lang": "pt-BR",
   "scope": "/",
   "start_url": "/",
   "icons": [
