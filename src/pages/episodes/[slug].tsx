@@ -9,7 +9,8 @@ import ptBR from 'date-fns/locale/pt-BR'
 import api from '../../services/api'
 import { convertDurationToTimeString } from '@/utils/convertDurationToTimeString'
 
-import { useGlobal } from '@/context/global'
+import { useGlobal } from '@/contexts/global'
+import { usePlayer } from '@/contexts/player'
 
 import { Container } from '@/styles/pages/Episode'
 
@@ -31,6 +32,7 @@ type EpisodeProps = {
 
 export default function Episode({ episode }: EpisodeProps) {
   const { player, header } = useGlobal()
+  const { play } = usePlayer()
 
   useEffect(() => {
     player.set(true)
@@ -51,7 +53,7 @@ export default function Episode({ episode }: EpisodeProps) {
           src={episode.thumbnail}
           objectFit="cover"
         />
-        <button type="button">
+        <button type="button" onClick={() => play(episode)}>
           <img src="/icons/play.svg" alt="Tocar episódio" />
         </button>
       </div>

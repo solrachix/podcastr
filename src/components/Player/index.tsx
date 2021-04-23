@@ -1,6 +1,7 @@
-import { ReactNode, useEffect, useRef } from 'react'
+import { ReactNode, useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
+import { convertDurationToTimeString } from '@/utils/convertDurationToTimeString'
 import { usePlayer } from '@/contexts/player'
 
 import { Container, Slider } from './styles'
@@ -11,12 +12,23 @@ interface PlayerProps {
 
 function Player({ children }: PlayerProps) {
   const audioRef = useRef<HTMLAudioElement>(null)
+  const [progress, setProgress] = useState(0)
+
   const {
     episodeList,
     currentEpisodeIndex,
     isPlaying,
     togglePlay,
-    setPlayingState
+    setPlayingState,
+    hasPrevious,
+    hasNext,
+    playNext,
+    playPrevious,
+    isLooping,
+    toggleLoop,
+    isShuffling,
+    toggleShuffle,
+    clearPlayerState
   } = usePlayer()
 
   const episode = episodeList[currentEpisodeIndex]
@@ -32,6 +44,28 @@ function Player({ children }: PlayerProps) {
       audioRef.current.pause()
     }
   }, [isPlaying])
+
+  function setupProgressListener() {
+    audioRef.current.currentTime = 0
+
+    audioRef.current.addEventListener('timeupdate', () => {
+      setProgress(Math.floor(audioRef.current.currentTime))
+    })
+  }
+
+  function handleSeek(amount: number) {
+    audioRef.current.currentTime = amount
+
+    setProgress(amount)
+  }
+
+  function handleEpisodeEnded() {
+    if (hasNext) {
+      playNext()
+    } else {
+      clearPlayerState()
+    }
+  }
 
   return (
     <Container>
@@ -59,28 +93,48 @@ function Player({ children }: PlayerProps) {
 
       <footer className={!episode ? 'empty' : ''}>
         <div className="progress">
-          <span>00:00</span>
+          <span>{convertDurationToTimeString(progress)}</span>
           <div className="slider">
-            {episode ? <Slider /> : <div className="emptySlider" />}
+            {episode ? (
+              <Slider
+                onChange={handleSeek}
+                max={episode.duration}
+                value={progress}
+              />
+            ) : (
+              <div className="emptySlider" />
+            )}
           </div>
-          <span>00:00</span>
+          <span>{convertDurationToTimeString(episode?.duration ?? 0)}</span>
         </div>
 
         {episode && (
           <audio
+            ref={audioRef}
             src={episode.url}
             autoPlay
-            ref={audioRef}
+            loop={isLooping}
+            onLoadedMetadata={setupProgressListener}
             onPlay={() => setPlayingState(true)}
             onPause={() => setPlayingState(false)}
+            onEnded={handleEpisodeEnded}
           />
         )}
 
         <div className="buttons">
-          <button type="button" disabled={!episode}>
+          <button
+            type="button"
+            disabled={!episode || episodeList.length === 1}
+            onClick={toggleShuffle}
+            className={isShuffling ? 'isActive' : ''}
+          >
             <img src="/icons/shuffle.svg" alt="Embaralhar" />
           </button>
-          <button type="button" disabled={!episode}>
+          <button
+            type="button"
+            disabled={!episode || !hasPrevious}
+            onClick={playPrevious}
+          >
             <img src="/icons/play-previous.svg" alt="Tocar anterior" />
           </button>
           <button
@@ -95,10 +149,19 @@ function Player({ children }: PlayerProps) {
               <img src="/icons/play.svg" alt="Tocar" />
             )}
           </button>
-          <button type="button" disabled={!episode}>
+          <button
+            type="button"
+            disabled={!episode || !hasPrevious}
+            onClick={playNext}
+          >
             <img src="/icons/play-next.svg" alt="Tocar próximo" />
           </button>
-          <button type="button" disabled={!episode}>
+          <button
+            type="button"
+            disabled={!episode}
+            onClick={toggleLoop}
+            className={isLooping ? 'isActive' : ''}
+          >
             <img src="/icons/repeat.svg" alt="Repetir" />
           </button>
         </div>

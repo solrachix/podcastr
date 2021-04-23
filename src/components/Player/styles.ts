@@ -33,7 +33,7 @@ export const Container = styled.div`
   footer {
     align-self: stretch;
 
-    &.empty {
+    &.empty .progress {
       opacity: 0.5;
     }
   }
@@ -115,9 +115,19 @@ export const Container = styled.div`
       transition: filter 0.2s;
       &:disabled {
         cursor: not-allowed;
+        opacity: 0.5;
       }
       &:hover:not(:disabled) {
         filter: brightness(0.7);
+      }
+
+      &.isActive {
+        filter: invert(0.35) sepia(1) saturate(3) hue-rotate(100deg);
+      }
+
+      &.isActive:hover {
+        filter: brightness(0.6) invert(0.35) sepia(1) saturate(3)
+          hue-rotate(100deg);
       }
 
       &.playButton {

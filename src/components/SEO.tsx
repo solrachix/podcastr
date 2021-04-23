@@ -17,7 +17,7 @@ export default function SEO({
   shouldExcludeTitleSuffix = false,
   shouldIndexPage = true
 }: SEOProps) {
-  const pageTitle = `${title} ${!shouldExcludeTitleSuffix && '- Solrachix'}`
+  const pageTitle = `${title} ${!shouldExcludeTitleSuffix && '| Podcastr'}`
   const pageImage = image
     ? image.startsWith('/')
       ? `${process.env.NEXT_PUBLIC_SITE_URL}${image}`
