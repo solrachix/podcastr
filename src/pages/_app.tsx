@@ -1,8 +1,7 @@
 import { AppProps } from 'next/app'
 import { useEffect } from 'react'
 
-import SmoothProvider from '@/lib/react-smooth-scrolling'
-
+import { PageTransition } from '@/components/PageTransition/index'
 import Context from '@/contexts'
 
 export default function App({
@@ -17,6 +16,17 @@ export default function App({
   }, [])
   return (
     <Context>
+      {/* <PageTransition>
+        {({ Component, pageProps }) => {
+          return Component ? (
+            <Component {...pageProps} />
+          ) : (
+            <SsrComponent {...ssrPageProps} />
+           )
+         }}
+       </PageTransition>
+      */}
+
       <SsrComponent {...ssrPageProps} />
     </Context>
   )
