@@ -6,6 +6,8 @@ export default createGlobalStyle`
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+
+    transition: background, stroke, fill 1s;
   }
 
   html, body, #__next {
@@ -17,7 +19,7 @@ export default createGlobalStyle`
     background: ${props => props.theme.colors.background.light};
     color: ${props => props.theme.colors.text.normal};
 
-    overflow-x: visible;
+    overflow: hidden;
   }
 
   body {

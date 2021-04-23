@@ -1,28 +1,48 @@
-import { GetStaticProps, InferGetStaticPropsType } from 'next'
-import Image from 'next/image'
 import Link from 'next/link'
 import React, { ReactElement, useEffect } from 'react'
 
-import { format, parseISO } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
+import ChangeTheme from '@/assets/sun.svg'
+
 import SEO from '@/components/SEO'
+import Svg from '@/components/Dashboard'
 import { Container } from '@/styles/pages/Home'
+import { useTheme } from '@/contexts/theme'
 
-interface HomeStaticProps {}
+export default function Home(): ReactElement {
+  const { theme, changeTheme } = useTheme()
 
-type HomeProps = InferGetStaticPropsType<GetStaticProps<HomeStaticProps>>
-
-export default function Home({}: HomeProps): ReactElement {
+  function handleChangeThemeClick() {
+    changeTheme(theme.title === 'Dark' ? 'Light' : 'Dark')
+  }
   return (
     <Container>
       <SEO title="Home" description={'Olá eu sou a description'} />
+
+      <header>
+        <img src="/icons/simple-logo.svg" alt="logo" />
+        <div>
+          <Link href="/dashboard">
+            <button>Entrar</button>
+          </Link>
+          <ChangeTheme onClick={handleChangeThemeClick} />
+        </div>
+      </header>
+
+      <section>
+        <span>Podcast Application</span>
+        <h1>Podcastr</h1>
+        <p>
+          Uma plataforma construída para transmissão de um podcast especifico, o
+          Faladev da Rocketseat.
+        </p>
+        <Link href="/dashboard">
+          <button>Entrar</button>
+        </Link>
+      </section>
+
+      <section>
+        <Svg className="dashboard" />
+      </section>
     </Container>
   )
-}
-
-export const getStaticProps: GetStaticProps<HomeStaticProps> = async () => {
-  return {
-    props: {},
-    revalidate: 1000 // uma hora: 60 * 60 * 1
-  }
 }
