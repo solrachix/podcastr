@@ -1,7 +1,7 @@
 {
-  "name": "Carlos Miguel portfolio",
+  "name": "Podcastr",
   "short_name": "solrachix",
-  "description": "Olá eu sou Carlos Miguel/solrachix, Programador full-stack, apaixonado por tecnologia.",
+  "description": "Veja todos o podcast Faladev em um só lugar",
   "theme_color": "#4347FE",
   "background_color": "#121214",
   "display": "standalone",
