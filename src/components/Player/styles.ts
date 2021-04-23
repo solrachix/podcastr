@@ -1,10 +1,12 @@
 import styled from 'styled-components'
 import { rgba } from 'polished'
 
+import { animated } from 'react-spring'
+
 import slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 
-export const Container = styled.div`
+export const Container = styled(animated.div)`
   position: absolute;
   right: 0;
   width: 26.5rem;
@@ -18,6 +20,19 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  .showButton {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 3rem;
+    height: 5rem;
+
+    background: ${props => props.theme.colors.primary.normal};
+    border-radius: ${props => props.theme.borderRadius};
+
+    transform: translate(-50%, -50%);
+  }
 
   header {
     display: flex;

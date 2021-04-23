@@ -5,10 +5,21 @@ export const Container = styled.div`
   padding: 3rem 2rem;
   margin: 0 auto;
 
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &::-webkit-scrollbar-thumb {
+    display: none;
+  }
+
   .thumbnailContainer {
     position: relative;
     width: fit-content;
     margin: auto;
+
+    div {
+      height: 20rem;
+    }
 
     img {
       border-radius: 1rem;

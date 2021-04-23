@@ -37,6 +37,10 @@ export default function Episode({ episode }: EpisodeProps) {
   useEffect(() => {
     player.set(true)
     header.set(true)
+    return () => {
+      player.set(false)
+      header.set(false)
+    }
   }, [])
 
   return (

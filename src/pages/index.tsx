@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { ReactElement, useEffect } from 'react'
+import React, { ReactElement } from 'react'
 
 import ChangeTheme from '@/assets/sun.svg'
 

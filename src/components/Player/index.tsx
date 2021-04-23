@@ -1,16 +1,13 @@
-import { ReactNode, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 
 import { convertDurationToTimeString } from '@/utils/convertDurationToTimeString'
 import { usePlayer } from '@/contexts/player'
 
 import { Container, Slider } from './styles'
+import { useSpring } from 'react-spring'
 
-interface PlayerProps {
-  children: ReactNode
-}
-
-function Player({ children }: PlayerProps) {
+function Player() {
   const audioRef = useRef<HTMLAudioElement>(null)
   const [progress, setProgress] = useState(0)
 
@@ -49,6 +46,10 @@ function Player({ children }: PlayerProps) {
     audioRef.current.currentTime = 0
 
     audioRef.current.addEventListener('timeupdate', () => {
+      if (!audioRef.current) {
+        return
+      }
+
       setProgress(Math.floor(audioRef.current.currentTime))
     })
   }
@@ -67,8 +68,17 @@ function Player({ children }: PlayerProps) {
     }
   }
 
+  const [show, setShow] = useState(true)
+
+  const { transform } = useSpring({
+    transform: `translateX(${show ? '0%' : '100%'})`,
+    config: { mass: 5, tension: 500, friction: 80 }
+  })
+
   return (
-    <Container>
+    <Container style={{ transform }}>
+      <div className="showButton" onClick={() => setShow(!show)} />
+
       <header>
         <img src="/icons/playing.svg" alt="Tocando agora" />
         <strong>Tocando agora</strong>

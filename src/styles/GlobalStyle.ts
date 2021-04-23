@@ -7,7 +7,9 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
 
-    transition: background, stroke, fill 1s;
+    transition: 1s;
+
+    transition-property: border-color, color, background-color, fill, stroke;
   }
 
   html, body, #__next {

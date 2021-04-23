@@ -13,7 +13,7 @@ type themesNames = ['Light', 'Dark']
 
 interface ThemeContextData {
   theme: typeof themes.LightTheme
-  changeTheme(name: themesNames): void
+  changeTheme(name: string): void
 }
 
 const ThemeContext = createContext<ThemeContextData>({} as ThemeContextData)

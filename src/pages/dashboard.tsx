@@ -47,11 +47,16 @@ export default function Home({
   useEffect(() => {
     player.set(true)
     header.set(true)
+
+    return () => {
+      player.set(false)
+      header.set(false)
+    }
   }, [])
 
   return (
     <Container>
-      <SEO title="Home" description={'Olá eu sou a description'} />
+      <SEO title="Dashboard" description={'Olá eu sou a description'} />
 
       <section className="latestEpisodes">
         <h2>Últimos lançamentos</h2>
