@@ -46,3 +46,10 @@ export default function Home(): ReactElement {
     </Container>
   )
 }
+
+export const getStaticProps = async () => {
+  return {
+    props: {},
+    revalidate: 1000 // uma hora: 60 * 60 * 1
+  }
+}

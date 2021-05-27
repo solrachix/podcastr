@@ -7,7 +7,6 @@ module.exports = withPlugins([
     images: {
       domains: ['storage.googleapis.com']
     },
-
     distDir: 'build',
     future: { webpack5: true },
     typescript: {

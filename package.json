@@ -1,6 +1,6 @@
 {
-  "name": "next-template",
-  "version": "0.1.0",
+  "name": "podcastr",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,7 +14,7 @@
     "date-fns": "^2.21.1",
     "dotenv": "^8.2.0",
     "json-server": "^0.16.3",
-    "next": "10.0.7",
+    "next": "^10.2.2",
     "next-compose-plugins": "^2.2.1",
     "next-pwa": "^5.0.5",
     "next-svgr": "^0.0.2",
