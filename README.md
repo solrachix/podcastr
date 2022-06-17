@@ -1,4 +1,4 @@
-<p>Forked by <a href="https://github.com/solrachix/podcastr">(https://github.com/solrachix/podcastr)</a></p>
+<p>Forked by <a href="https://github.com/solrachix/podcastr">https://github.com/solrachix/podcastr</a></p>
 <h1 align="center">
   <a href="https://github.com/solrachix/podcastr">
     <img alt="Move.it Logo" src="https://github.com/solrachix/podcastr/blob/master/public/icons/logo.svg?raw=true" width="50%" />
