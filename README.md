@@ -54,19 +54,10 @@ https://github.com/solrachix/podcastr
 
 ### Setup
 
-- Install project dependencies;
-  - ```javascript
-    yarn install
-    // or
-    npm install
-    ```
 - Run project in development mode;
 
-  - ```javascript
-    yarn dev
-    // or
-    npm run dev
-    ```
+docker build -t yourusername/repository-name .
+docker run -p80:3000 yourusername/example-node-app
 
 - Be Happy! 😆
 
