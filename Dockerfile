@@ -1,13 +1,11 @@
-FROM node:15
+FROM node:12
+WORKDIR /usr/src/app
 
-WORKDIR /app
+COPY . ./
 
-COPY package*.json ./
+# building the app
+RUN npm i
+RUN npm run build
 
-RUN npm install 
-
-COPY . .
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+# Running the app
+CMD [ "npm", "start" ]
