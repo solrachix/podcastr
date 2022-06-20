@@ -1,3 +1,4 @@
+<p>Forked by <a href="https://github.com/solrachix/podcastr">https://github.com/solrachix/podcastr</a></p>
 <h1 align="center">
   <a href="https://github.com/solrachix/podcastr">
     <img alt="Move.it Logo" src="https://github.com/solrachix/podcastr/blob/master/public/icons/logo.svg?raw=true" width="50%" />
@@ -53,19 +54,10 @@ https://github.com/solrachix/podcastr
 
 ### Setup
 
-- Install project dependencies;
-  - ```javascript
-    yarn install
-    // or
-    npm install
-    ```
 - Run project in development mode;
 
-  - ```javascript
-    yarn dev
-    // or
-    npm run dev
-    ```
+docker build -t yourusername/repository-name .
+docker run -p80:3000 yourusername/example-node-app
 
 - Be Happy! 😆
 
